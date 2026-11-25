@@ -1,0 +1,2211 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Text Formatter Bold Italic – Free Post Tool</title>
+  <meta name="description" content="Free LinkedIn text formatter bold italic tool. Style post hooks, headings, and lists with one-click copy and a live LinkedIn feed preview.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://example.com/linkedin-text-formatter">
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="LinkFormat">
+  <meta property="og:title" content="LinkedIn Text Formatter Bold Italic – Free Post Tool">
+  <meta property="og:description" content="Free LinkedIn text formatter bold italic tool. Style post hooks, headings, and lists with one-click copy and a live LinkedIn feed preview.">
+  <meta property="og:url" content="https://example.com/linkedin-text-formatter">
+
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LinkedIn Text Formatter Bold Italic – Free Post Tool">
+  <meta name="twitter:description" content="Free LinkedIn text formatter bold italic tool. Style post hooks, headings, and lists with one-click copy and a live LinkedIn feed preview.">
+
+  <!-- Inline SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A66C2'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif' font-size='32' font-weight='800' fill='%23FFFFFF' letter-spacing='-1'%3EAa%3C/text%3E%3C/svg%3E">
+
+  <!-- Structured Data: WebApplication + FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "LinkedIn Text Formatter Bold Italic",
+        "url": "https://example.com/linkedin-text-formatter",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "inLanguage": "en-US",
+        "description": "Free LinkedIn text formatter bold italic utility and unicode font generator for LinkedIn posts with one-click copy and a live feed preview.",
+        "browserRequirements": "Requires JavaScript enabled",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Bold Sans-Serif Unicode text formatting",
+          "Italic and Bold Italic Sans-Serif styles",
+          "Bold Serif, Italic Serif, Monospace, and Script styles",
+          "Combining Underlined and Strikethrough formatting",
+          "Live 3,000-character LinkedIn counter",
+          "Live LinkedIn feed preview with 210-character fold indicator",
+          "One-click clipboard copy"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does this unicode font generator for LinkedIn work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "LinkedIn strips out HTML tags and Markdown inside standard feed posts, so regular styling shortcuts like Ctrl+B do not work. This unicode font generator for LinkedIn swaps standard letters and numbers for Mathematical Alphanumeric Unicode symbols that look bold, italic, serif, monospace, or cursive while staying plain text you can paste anywhere."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does formatting text with Unicode hurt LinkedIn reach or the algorithm?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Using bold or italic text sparingly for your opening hook or section headers does not trigger spam filters. However, LinkedIn's search index treats Unicode symbols differently from plain ASCII letters, so you should keep keywords and main body sentences in regular text for searchability and clarity."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will formatted LinkedIn fonts display properly on iPhone, Android, and desktop?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Modern versions of iOS, Android, macOS, and Windows support the Unicode Mathematical Alphanumeric block natively. Sans-serif bold, italic, and monospace styles render consistently across devices, though older Android phones can occasionally show slightly uneven spacing on combining underline and strikethrough marks."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why doesn't LinkedIn have native bold and italic buttons in feed posts?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "LinkedIn reserves rich-text formatting tools for long-form LinkedIn Articles and Newsletters. Keeping regular feed updates in plain text helps the feed load quickly and keeps posts visually consistent across mobile and desktop apps."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-canvas: #F3F2EF;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F8F7F5;
+      --bg-tint: #EEF3F8;
+      --accent: #0A66C2;
+      --accent-hover: #004182;
+      --text-primary: #191919;
+      --text-secondary: #5E5E5E;
+      --text-muted: #6E6E6E;
+      --border-hairline: #E0DFDC;
+      --border-strong: #C9C7C2;
+      --success: #057642;
+      --success-bg: #ECF7F0;
+      --warning: #915907;
+      --warning-bg: #FDF5E6;
+      --danger: #B91C1C;
+      --danger-bg: #FEF2F2;
+      --radius-lg: 12px;
+      --radius-md: 8px;
+      --radius-sm: 6px;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    button, textarea, select {
+      font-family: inherit;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header (Strict 3-Zone Single-Row Contract) */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      height: 58px;
+    }
+
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-primary);
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .brand-link:hover {
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      background-color: var(--accent);
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      flex-shrink: 0;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .site-nav a {
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+      transition: color 150ms var(--ease-out), border-color 150ms var(--ease-out);
+      text-decoration: none;
+    }
+
+    .site-nav a:hover {
+      color: var(--text-primary);
+      border-bottom-color: var(--accent);
+      text-decoration: none;
+    }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 8px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid transparent;
+      background-color: var(--accent);
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: background-color 150ms var(--ease-out), transform 120ms var(--ease-out);
+    }
+
+    .header-cta:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .header-cta:active {
+      transform: scale(0.98);
+    }
+
+    /* Hero Intro */
+    .hero {
+      padding: 28px 0 20px;
+    }
+
+    .hero-head {
+      max-width: 780px;
+    }
+
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.65rem, 2.8vw, 2.25rem);
+      font-weight: 700;
+      line-height: 1.18;
+      letter-spacing: -0.025em;
+      color: var(--text-primary);
+      text-wrap: balance;
+    }
+
+    .hero-lead {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      max-width: 68ch;
+    }
+
+    /* Main Workspace Layout */
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 1.38fr) minmax(330px, 0.92fr);
+      gap: 24px;
+      align-items: start;
+      padding-bottom: 40px;
+    }
+
+    .workspace.preview-hidden {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .workspace.preview-hidden .preview-column {
+      display: none;
+    }
+
+    .editor-column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      min-width: 0;
+    }
+
+    /* Surface Card */
+    .card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+    }
+
+    /* Composer Card */
+    .composer-card {
+      padding: 20px;
+    }
+
+    .composer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .composer-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .composer-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 36px;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-hairline);
+      background-color: var(--bg-surface);
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: background-color 140ms var(--ease-out), color 140ms var(--ease-out), border-color 140ms var(--ease-out);
+    }
+
+    .btn-ghost:hover {
+      background-color: var(--bg-subtle);
+      color: var(--text-primary);
+      border-color: var(--border-strong);
+    }
+
+    .btn-ghost:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .post-textarea {
+      width: 100%;
+      min-height: 152px;
+      padding: 14px 16px;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-md);
+      background-color: var(--bg-subtle);
+      color: var(--text-primary);
+      font-size: 15px;
+      line-height: 1.55;
+      resize: vertical;
+      transition: border-color 150ms var(--ease-out), background-color 150ms var(--ease-out);
+    }
+
+    .post-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background-color: var(--bg-surface);
+      box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.14);
+    }
+
+    .post-textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .composer-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .meta-strip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-variant-numeric: tabular-nums;
+      flex-wrap: wrap;
+    }
+
+    .meta-sep {
+      color: var(--border-strong);
+      user-select: none;
+    }
+
+    .char-status {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .char-status.is-warning {
+      color: var(--warning);
+    }
+
+    .char-status.is-over {
+      color: var(--danger);
+    }
+
+    .limit-bar-track {
+      width: 100%;
+      height: 4px;
+      margin-top: 10px;
+      border-radius: 999px;
+      background-color: #ECEBE8;
+      overflow: hidden;
+    }
+
+    .limit-bar-fill {
+      height: 100%;
+      width: 0%;
+      background-color: var(--accent);
+      border-radius: 999px;
+      transition: width 150ms var(--ease-out), background-color 150ms var(--ease-out);
+    }
+
+    .limit-bar-fill.is-warning {
+      background-color: var(--warning);
+    }
+
+    .limit-bar-fill.is-over {
+      background-color: var(--danger);
+    }
+
+    .limit-alert {
+      display: none;
+      margin-top: 10px;
+      padding: 9px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .limit-alert.is-visible {
+      display: block;
+    }
+
+    .limit-alert.is-warning {
+      background-color: var(--warning-bg);
+      color: var(--warning);
+      border: 1px solid #F2D8A7;
+    }
+
+    .limit-alert.is-over {
+      background-color: var(--danger-bg);
+      color: var(--danger);
+      border: 1px solid #FECACA;
+    }
+
+    /* Styles Section Header */
+    .styles-toolbar {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .styles-heading {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.015em;
+    }
+
+    .styles-sub {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* Style Output Grid */
+    .styles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .styles-grid .style-card:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+
+    .workspace.preview-hidden .styles-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .workspace.preview-hidden .styles-grid .style-card:last-child:nth-child(odd) {
+      grid-column: auto;
+    }
+
+    .style-card {
+      display: flex;
+      flex-direction: column;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      transition: border-color 150ms var(--ease-out);
+      min-width: 0;
+    }
+
+    .style-card.is-selected {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent);
+    }
+
+    .style-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .style-meta {
+      min-width: 0;
+    }
+
+    .style-name {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .style-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+
+    .style-card-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .btn-preview-mini {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-hairline);
+      background-color: var(--bg-surface);
+      color: var(--text-secondary);
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 140ms var(--ease-out), color 140ms var(--ease-out), border-color 140ms var(--ease-out);
+    }
+
+    .btn-preview-mini:hover {
+      background-color: var(--bg-tint);
+      color: var(--accent);
+      border-color: #B8D4EE;
+    }
+
+    .style-card.is-selected .btn-preview-mini {
+      background-color: var(--bg-tint);
+      color: var(--accent);
+      border-color: #B8D4EE;
+    }
+
+    .btn-copy {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      min-height: 34px;
+      min-width: 78px;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      background-color: var(--accent);
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 140ms var(--ease-out), transform 120ms var(--ease-out);
+    }
+
+    .btn-copy:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .btn-copy:active {
+      transform: scale(0.97);
+    }
+
+    .btn-copy:disabled {
+      background-color: #A9C4DF;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-copy.is-copied {
+      background-color: var(--success);
+    }
+
+    .style-output {
+      margin: 0;
+      padding: 12px;
+      border-radius: var(--radius-md);
+      background-color: var(--bg-subtle);
+      color: var(--text-primary);
+      font-size: 14px;
+      line-height: 1.55;
+      min-height: 76px;
+      max-height: 144px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    .style-output[data-testid="output-script"] {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .style-output.is-empty {
+      color: var(--text-muted);
+      font-style: normal;
+    }
+
+    /* Live LinkedIn Preview Column */
+    .preview-column {
+      position: sticky;
+      top: 76px;
+      min-width: 0;
+    }
+
+    .preview-shell {
+      padding: 18px;
+    }
+
+    .preview-controls-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .preview-title {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .segmented {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px;
+      border-radius: var(--radius-md);
+      background-color: var(--bg-canvas);
+      border: 1px solid var(--border-hairline);
+    }
+
+    .segmented button {
+      min-height: 30px;
+      padding: 4px 10px;
+      border: 0;
+      border-radius: 5px;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 140ms var(--ease-out), color 140ms var(--ease-out);
+    }
+
+    .segmented button[aria-pressed="true"] {
+      background-color: var(--bg-surface);
+      color: var(--text-primary);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    }
+
+    .preview-style-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 14px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--border-hairline);
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .preview-style-select {
+      min-height: 34px;
+      padding: 5px 10px;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-surface);
+      color: var(--text-primary);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Mock LinkedIn Post */
+    .li-post {
+      background-color: var(--bg-surface);
+    }
+
+    .li-author {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .li-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: #1D4E7A;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      flex-shrink: 0;
+    }
+
+    .li-author-meta {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .li-name-row {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .li-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .li-degree {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .li-headline {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.35;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .li-time {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    .li-body {
+      font-size: 14px;
+      line-height: 1.48;
+      color: var(--text-primary);
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      min-height: 92px;
+    }
+
+    .li-body.is-empty {
+      color: var(--text-muted);
+    }
+
+    .li-see-more-btn {
+      display: inline;
+      padding: 0;
+      margin-left: 2px;
+      border: 0;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .li-see-more-btn:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .fold-note {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border-strong);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .fold-note strong {
+      color: var(--text-primary);
+    }
+
+    .li-stats {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-hairline);
+      font-size: 12px;
+      color: var(--text-secondary);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .li-reactions {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .li-reaction-icons {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .li-reaction-icons svg {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      margin-right: -3px;
+      border: 1px solid #FFFFFF;
+    }
+
+    .li-reaction-icons svg:last-child {
+      margin-right: 0;
+    }
+
+    .li-actions {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 4px;
+      padding-top: 6px;
+    }
+
+    .li-action-item {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 4px;
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .preview-copy-footer {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-hairline);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .preview-copy-hint {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* Editorial Sections Below the Tool */
+    .content-section {
+      padding: 40px 0;
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .section-header {
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
+
+    .section-header h2 {
+      margin: 0 0 8px;
+      font-size: clamp(1.3rem, 2.2vw, 1.65rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      color: var(--text-primary);
+      text-wrap: balance;
+    }
+
+    .section-header p {
+      margin: 0;
+      font-size: 15px;
+      color: var(--text-secondary);
+      max-width: 65ch;
+    }
+
+    /* Steps Grid */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .step-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+    }
+
+    .step-num {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .step-card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .step-card p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    /* Pro Tips & Accessibility Grid */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .tip-panel {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+
+    .tip-panel.is-accessibility {
+      background-color: var(--bg-tint);
+      border-color: #C7DDF2;
+    }
+
+    .tip-panel h3 {
+      margin: 0 0 10px;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .tip-panel p {
+      margin: 0 0 12px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
+    .tip-panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    .tip-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .tip-list li {
+      margin-bottom: 8px;
+    }
+
+    .tip-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .tip-list strong {
+      color: var(--text-primary);
+    }
+
+    /* FAQ Accordion */
+    .faq-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      max-width: 860px;
+    }
+
+    .faq-item {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .faq-item summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 20px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary:hover {
+      background-color: var(--bg-subtle);
+    }
+
+    .faq-chevron {
+      width: 18px;
+      height: 18px;
+      color: var(--text-secondary);
+      flex-shrink: 0;
+      transition: transform 160ms var(--ease-out);
+    }
+
+    .faq-item[open] .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      padding: 0 20px 18px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
+    .faq-answer p {
+      margin: 0;
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: var(--bg-surface);
+      border-top: 1px solid var(--border-hairline);
+      padding: 24px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 1024px) {
+      .workspace {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .preview-column {
+        position: static;
+      }
+
+      .styles-grid,
+      .workspace.preview-hidden .styles-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .header-inner {
+        gap: 12px;
+        height: 54px;
+      }
+
+      .site-nav {
+        display: none;
+      }
+
+      .header-cta {
+        min-height: 36px;
+        padding: 6px 12px;
+        font-size: 13px;
+      }
+
+      .hero {
+        padding: 20px 0 16px;
+      }
+
+      .composer-card,
+      .preview-shell,
+      .step-card,
+      .tip-panel {
+        padding: 16px;
+      }
+
+      .styles-grid,
+      .workspace.preview-hidden .styles-grid,
+      .steps-grid,
+      .tips-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-copy,
+      .btn-preview-mini,
+      .btn-ghost {
+        min-height: 40px;
+      }
+
+      .li-action-item {
+        font-size: 11px;
+        gap: 4px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#formatter" class="brand-link" aria-label="LinkFormat home">
+        <span class="brand-mark" aria-hidden="true">Aa</span>
+        <span>LinkFormat</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#formatter">Formatter</a>
+        <a href="#how-to-format">How It Works</a>
+        <a href="#pro-tips">Tips</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <button type="button" id="headerFocusBtn" class="header-cta">Start Formatting</button>
+    </div>
+  </header>
+
+  <main id="formatter">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-head">
+          <h1>LinkedIn Text Formatter Bold Italic</h1>
+          <p class="hero-lead">
+            Format post hooks, section headers, and takeaways in seconds with a fast LinkedIn text formatter bold italic tool built for clean readability. Type or paste your draft below, preview where LinkedIn cuts off your post at the fold, and copy any Unicode style in one click.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="LinkedIn text formatter workspace">
+      <div class="container">
+        <div id="workspaceGrid" class="workspace">
+          <!-- Left Column: Editor + 9 Unicode Output Cards -->
+          <div class="editor-column">
+            <div class="card composer-card">
+              <div class="composer-header">
+                <label for="postInput" class="composer-label">Your LinkedIn Post Draft</label>
+                <div class="composer-actions">
+                  <button type="button" id="togglePreviewBtn" class="btn-ghost" aria-pressed="true">Hide Preview</button>
+                  <button type="button" id="sampleTextBtn" class="btn-ghost">Load Sample</button>
+                  <button type="button" id="clearTextBtn" class="btn-ghost">Clear Text</button>
+                </div>
+              </div>
+
+              <textarea
+                id="postInput"
+                class="post-textarea"
+                rows="6"
+                placeholder="Write or paste your LinkedIn hook or full post here..."
+                aria-describedby="charCounterStatus limitAlert"
+                spellcheck="true"
+              ></textarea>
+
+              <div class="composer-footer">
+                <div class="meta-strip" id="charCounterStatus">
+                  <span id="charCountLabel" class="char-status">0 / 3,000 characters</span>
+                  <span class="meta-sep" aria-hidden="true">·</span>
+                  <span id="wordCountLabel">0 words</span>
+                  <span class="meta-sep" aria-hidden="true">·</span>
+                  <span id="remainingLabel">3,000 remaining</span>
+                </div>
+              </div>
+
+              <div class="limit-bar-track" aria-hidden="true">
+                <div id="limitBarFill" class="limit-bar-fill"></div>
+              </div>
+
+              <div id="limitAlert" class="limit-alert" role="status" aria-live="polite"></div>
+            </div>
+
+            <div class="styles-toolbar">
+              <h2 class="styles-heading">Formatted Unicode Styles</h2>
+              <p class="styles-sub">Click Copy to paste directly into LinkedIn, or Preview to test in the feed card.</p>
+            </div>
+
+            <div id="stylesGrid" class="styles-grid" aria-live="off"></div>
+          </div>
+
+          <!-- Right Column: Live LinkedIn Feed Preview -->
+          <aside id="previewColumn" class="preview-column" aria-label="Live LinkedIn feed preview">
+            <div class="card preview-shell">
+              <div class="preview-controls-bar">
+                <h2 class="preview-title">Live LinkedIn Feed Preview</h2>
+                <div class="segmented" role="group" aria-label="Preview formatting scope">
+                  <button type="button" id="scopeHookBtn" aria-pressed="true">Hook Only</button>
+                  <button type="button" id="scopeFullBtn" aria-pressed="false">Full Post</button>
+                </div>
+              </div>
+
+              <div class="preview-style-row">
+                <label for="previewStyleSelect">Preview style</label>
+                <select id="previewStyleSelect" class="preview-style-select" aria-label="Select Unicode style for feed preview"></select>
+              </div>
+
+              <article class="li-post" aria-label="Mock LinkedIn post">
+                <div class="li-author">
+                  <div class="li-avatar" aria-hidden="true">HM</div>
+                  <div class="li-author-meta">
+                    <div class="li-name-row">
+                      <span class="li-name">Hannah Mercer</span>
+                      <span class="li-degree">· 1st</span>
+                    </div>
+                    <div class="li-headline">Product Marketing Lead · B2B SaaS · Chicago, IL</div>
+                    <div class="li-time">
+                      <span>2h</span>
+                      <span aria-hidden="true">·</span>
+                      <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                        <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm4.9 6h-2.1a10.4 10.4 0 0 0-.9-3.6A5.5 5.5 0 0 1 12.9 7zM8 2.5c.7 1 1.3 2.7 1.5 4.5h-3C6.7 5.2 7.3 3.5 8 2.5zM6.1 3.4A10.4 10.4 0 0 0 5.2 7H3.1a5.5 5.5 0 0 1 3-3.6zM3.1 9h2.1c.2 1.3.5 2.6.9 3.6A5.5 5.5 0 0 1 3.1 9zm4.9 4.5c-.7-1-1.3-2.7-1.5-4.5h3c-.2 1.8-.8 3.5-1.5 4.5zm1.9-.9c.4-1 .7-2.3.9-3.6h2.1a5.5 5.5 0 0 1-3 3.6z"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="liPostBody" class="li-body"></div>
+
+                <div id="foldNote" class="fold-note">
+                  <span id="foldSummary">Above the 210-character fold</span>
+                  <button type="button" id="toggleFoldBtn" class="li-see-more-btn" hidden>Expand preview</button>
+                </div>
+
+                <div class="li-stats" aria-hidden="true">
+                  <div class="li-reactions">
+                    <span class="li-reaction-icons">
+                      <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#0A66C2"/><path d="M5.2 7.5h1.4v4H5.2zm2.2 0l1.6-2.8c.2-.4.8-.3.9.2l-.2 2.1h1.7c.5 0 .9.5.8 1l-.5 2.5c-.1.6-.6 1-1.2 1H7.4v-4z" fill="#FFF"/></svg>
+                      <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#DF704D"/><path d="M8 11.7l-.5-.4C5.4 9.5 4.2 8.4 4.2 7c0-1.1.8-1.9 1.9-1.9.7 0 1.4.4 1.9 1 .5-.6 1.2-1 1.9-1 1.1 0 1.9.8 1.9 1.9 0 1.4-1.2 2.5-3.3 4.3l-.5.4z" fill="#FFF"/></svg>
+                      <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#6DAE4F"/><path d="M8 3.8a3 3 0 0 0-1.5 5.6V11h3V9.4A3 3 0 0 0 8 3.8zm-1 8h2v.8H7v-.8z" fill="#FFF"/></svg>
+                    </span>
+                    <span>148</span>
+                  </div>
+                  <span>24 comments · 9 reposts</span>
+                </div>
+
+                <div class="li-actions" aria-hidden="true">
+                  <div class="li-action-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg>
+                    <span>Like</span>
+                  </div>
+                  <div class="li-action-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <span>Comment</span>
+                  </div>
+                  <div class="li-action-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
+                    <span>Repost</span>
+                  </div>
+                  <div class="li-action-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                    <span>Send</span>
+                  </div>
+                </div>
+              </article>
+
+              <div class="preview-copy-footer">
+                <span id="previewCopyHint" class="preview-copy-hint">Copies your post with the first line formatted.</span>
+                <button type="button" id="copyPreviewBtn" class="btn-copy">Copy Post</button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 1: How to Format LinkedIn Posts -->
+    <section id="how-to-format" class="content-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>How to Use This Unicode Font Generator for LinkedIn</h2>
+          <p>
+            LinkedIn strips standard rich-text markup from feed updates. This unicode font generator for LinkedIn lets you style key lines in three quick steps without installing browser extensions.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card">
+            <span class="step-num">01</span>
+            <h3>Draft or paste your text</h3>
+            <p>
+              Enter your opening hook, a bulleted takeaway, or your full LinkedIn draft into the editor above. Keep an eye on the live 3,000-character counter as you tighten your message.
+            </p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-num">02</span>
+            <h3>Check the feed preview</h3>
+            <p>
+              Pick Bold Sans-Serif, Italic, Monospace, or any other style and preview how your first 210 characters sit above the "see more" fold before anyone taps to expand.
+            </p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-num">03</span>
+            <h3>Copy and paste into LinkedIn</h3>
+            <p>
+              Click Copy on the style card—or Copy Post in the preview panel—and paste directly into the LinkedIn post composer on desktop or the mobile app. Emojis and line breaks stay intact.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Pro Tips & Accessibility Note -->
+    <section id="pro-tips" class="content-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Pro Tips &amp; Accessibility Note</h2>
+          <p>
+            Formatting works best when it guides a skimmer's eye to the main point instead of turning the whole post into a wall of heavy type.
+          </p>
+        </div>
+
+        <div class="tips-grid">
+          <article class="tip-panel">
+            <h3>Practical Formatting Habits</h3>
+            <ul class="tip-list">
+              <li><strong>Bold the hook, not the paragraph:</strong> Style your first line or short section headings so readers can scan your argument in two seconds.</li>
+              <li><strong>Keep key phrases searchable:</strong> LinkedIn search indexes plain ASCII text more reliably than Unicode symbols. Leave company names, job titles, and core topics unformatted.</li>
+              <li><strong>Stick to one or two styles per post:</strong> Pairing Bold Sans-Serif for headings with regular text for body copy reads cleanly on both iOS and desktop feeds.</li>
+              <li><strong>Respect the 210-character fold:</strong> Put your sharpest observation in lines one and two so readers have a clear reason to click "see more."</li>
+            </ul>
+          </article>
+
+          <article class="tip-panel is-accessibility">
+            <h3>An Honest Note on Screen Readers</h3>
+            <p>
+              Styled LinkedIn text relies on Unicode Mathematical Alphanumeric characters originally designed for math notation—not visual fonts. Because of that, assistive tools like VoiceOver, NVDA, and JAWS sometimes skip styled words or read them out letter by letter.
+            </p>
+            <p>
+              If you want your posts to stay readable for blind and low-vision colleagues, keep full paragraphs in standard plain text and reserve bold or italic Unicode strictly for short 3-to-8-word headings or emphasis.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: FAQ -->
+    <section id="faq" class="content-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Frequently Asked Questions</h2>
+          <p>
+            Straight answers on how styled LinkedIn text works behind the scenes and what to watch out for when publishing.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>
+              <span>How does this unicode font generator for LinkedIn work?</span>
+              <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                LinkedIn removes HTML and Markdown formatting from standard feed posts, so shortcuts like Ctrl+B do nothing in the composer. This unicode font generator for LinkedIn replaces regular letters and numbers with official Unicode Mathematical Alphanumeric characters that display as bold, italic, serif, monospace, or script while remaining plain text you can paste anywhere.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Does formatting text with Unicode hurt LinkedIn reach or the algorithm?</span>
+              <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                No—using bold or italic text sparingly on a headline or short takeaway does not trigger LinkedIn spam filters. Just avoid formatting entire posts, because LinkedIn search indexes regular ASCII words better than mathematical Unicode symbols and plain text is easier to read at length.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Will formatted LinkedIn fonts display properly on iPhone, Android, and desktop?</span>
+              <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                Yes. Modern iOS, Android, macOS, and Windows devices include built-in font support for the Unicode Mathematical Alphanumeric block. Bold Sans-Serif, Italic, Serif, and Monospace look crisp across platforms, while combining Underlined and Strikethrough styles can occasionally show minor spacing quirks on older Android handsets.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Why doesn't LinkedIn have native bold and italic buttons in feed posts?</span>
+              <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                LinkedIn saves native rich-text formatting for long-form Articles and Newsletters. Keeping standard feed updates plain text keeps the timeline fast, uniform, and predictable across mobile and desktop apps—which is why writers turn to Unicode formatting when they need clear visual hierarchy.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>LinkFormat · Free LinkedIn Text Formatter. Runs locally in your browser—no text is stored or sent anywhere.</span>
+      <div class="footer-links">
+        <a href="#formatter">Formatter</a>
+        <a href="#how-to-format">How It Works</a>
+        <a href="#pro-tips">Accessibility</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="liveAnnouncer" class="sr-only" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var MAX_LINKEDIN_CHARS = 3000;
+      var WARN_LINKEDIN_CHARS = 2700;
+      var FOLD_CHAR_LIMIT = 210;
+
+      var DEFAULT_SAMPLE =
+        'Most LinkedIn posts lose readers in the first two lines.\n\n' +
+        'Not because the idea is weak—because a dense block of unformatted text looks like homework on a phone screen.\n\n' +
+        'Here is a quick 3-step check before you hit Post:\n' +
+        '1. Bold your opening hook so skimmers catch the point fast.\n' +
+        '2. Keep paragraphs to 1–2 short lines with real breathing room.\n' +
+        '3. Check what shows above the 210-character fold. ✅';
+
+      var ASCII_UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var ASCII_LOWER = 'abcdefghijklmnopqrstuvwxyz';
+      var ASCII_DIGITS = '0123456789';
+
+      // Complete explicit Unicode character arrays (zero truncation)
+      var MAPS = {
+        boldSans: {
+          upper: [
+            '𝗔','𝗕','𝗖','𝗗','𝗘','𝗙','𝗚','𝗛','𝗜','𝗝','𝗞','𝗟','𝗠',
+            '𝗡','𝗢','𝗣','𝗤','𝗥','𝗦','𝗧','𝗨','𝗩','𝗪','𝗫','𝗬','𝗭'
+          ],
+          lower: [
+            '𝗮','𝗯','𝗰','𝗱','𝗲','𝗳','𝗴','𝗵','𝗶','𝗷','𝗸','𝗹','𝗺',
+            '𝗻','𝗼','𝗽','𝗾','𝗿','𝘀','𝘁','𝘂','𝘃','𝘄','𝘅','𝘆','𝘇'
+          ],
+          digits: ['𝟬','𝟭','𝟮','𝟯','𝟰','𝟱','𝟲','𝟳','𝟴','𝟵']
+        },
+        italicSans: {
+          upper: [
+            '𝘈','𝘉','𝘊','𝘋','𝘌','𝘍','𝘎','𝘏','𝘐','𝘑','𝘒','𝘓','𝘔',
+            '𝘕','𝘖','𝘗','𝘘','𝘙','𝘚','𝘛','𝘜','𝘝','𝘞','𝘟','𝘠','𝘡'
+          ],
+          lower: [
+            '𝘢','𝘣','𝘤','𝘥','𝘦','𝘧','𝘨','𝘩','𝘪','𝘫','𝘬','𝘭','𝘮',
+            '𝘯','𝘰','𝘱','𝘲','𝘳','𝘴','𝘵','𝘶','𝘷','𝘸','𝘹','𝘺','𝘻'
+          ],
+          digits: ['0','1','2','3','4','5','6','7','8','9']
+        },
+        boldItalicSans: {
+          upper: [
+            '𝘼','𝘽','𝘾','𝘿','𝙀','𝙁','𝙂','𝙃','𝙄','𝙅','𝙆','𝙇','𝙈',
+            '𝙉','𝙊','𝙋','𝙌','𝙍','𝙎','𝙏','𝙐','𝙑','𝙒','𝙓','𝙔','𝙕'
+          ],
+          lower: [
+            '𝙖','𝙗','𝙘','𝙙','𝙚','𝙛','𝙜','𝙝','𝙞','𝙟','𝙠','𝙡','𝙢',
+            '𝙣','𝙤','𝙥','𝙦','𝙧','𝙨','𝙩','𝙪','𝙫','𝙬','𝙭','𝙮','𝙯'
+          ],
+          digits: ['𝟬','𝟭','𝟮','𝟯','𝟰','𝟱','𝟲','𝟳','𝟴','𝟵']
+        },
+        boldSerif: {
+          upper: [
+            '𝐀','𝐁','𝐂','𝐃','𝐄','𝐅','𝐆','𝐇','𝐈','𝐉','𝐊','𝐋','𝐌',
+            '𝐍','𝐎','𝐏','𝐐','𝐑','𝐒','𝐓','𝐔','𝐕','𝐖','𝐗','𝐘','𝐙'
+          ],
+          lower: [
+            '𝐚','𝐛','𝐜','𝐝','𝐞','𝐟','𝐠','𝐡','𝐢','𝐣','𝐤','𝐥','𝐦',
+            '𝐧','𝐨','𝐩','𝐪','𝐫','𝐬','𝐭','𝐮','𝐯','𝐰','𝐱','𝐲','𝐳'
+          ],
+          digits: ['𝟎','𝟏','𝟐','𝟑','𝟒','𝟓','𝟔','𝟕','𝟖','𝟗']
+        },
+        italicSerif: {
+          upper: [
+            '𝐴','𝐵','𝐶','𝐷','𝐸','𝐹','𝐺','𝐻','𝐼','𝐽','𝐾','𝐿','𝑀',
+            '𝑁','𝑂','𝑃','𝑄','𝑅','𝑆','𝑇','𝑈','𝑉','𝑊','𝑋','𝑌','𝑍'
+          ],
+          lower: [
+            '𝑎','𝑏','𝑐','𝑑','𝑒','𝑓','𝑔','ℎ','𝑖','𝑗','𝑘','𝑙','𝑚',
+            '𝑛','𝑜','𝑝','𝑞','𝑟','𝑠','𝑡','𝑢','𝑣','𝑤','𝑥','𝑦','𝑧'
+          ],
+          digits: ['0','1','2','3','4','5','6','7','8','9']
+        },
+        monospace: {
+          upper: [
+            '𝙰','𝙱','𝙲','𝙳','𝙴','𝙵','𝙶','𝙷','𝙸','𝙹','𝙺','𝙻','𝙼',
+            '𝙽','𝙾','𝙿','𝚀','𝚁','𝚂','𝚃','𝚄','𝚅','𝚆','𝚇','𝚈','𝚉'
+          ],
+          lower: [
+            '𝚊','𝚋','𝚌','𝚍','𝚎','𝚏','𝚐','𝚑','𝚒','𝚓','𝚔','𝚕','𝚖',
+            '𝚗','𝚘','𝚙','𝚚','𝚛','𝚜','𝚝','𝚞','𝚟','𝚠','𝚡','𝚢','𝚣'
+          ],
+          digits: ['𝟶','𝟷','𝟸','𝟹','𝟺','𝟻','𝟼','𝟽','𝟾','𝟿']
+        },
+        script: {
+          upper: [
+            '𝓐','𝓑','𝓒','𝓓','𝓔','𝓕','𝓖','𝓗','𝓘','𝓙','𝓚','𝓛','𝓜',
+            '𝓝','𝓞','𝓟','𝓠','𝓡','𝓢','𝓣','𝓤','𝓥','𝓦','𝓧','𝓨','𝓩'
+          ],
+          lower: [
+            '𝓪','𝓫','𝓬','𝓭','𝓮','𝓯','𝓰','𝓱','𝓲','𝓳','𝓴','𝓵','𝓶',
+            '𝓷','𝓸','𝓹','𝓺','𝓻','𝓼','𝓽','𝓾','𝓿','𝔀','𝔁','𝔂','𝔃'
+          ],
+          digits: ['0','1','2','3','4','5','6','7','8','9']
+        }
+      };
+
+      var STYLES = [
+        { id: 'boldSans', name: 'Bold (Sans-Serif)', note: 'Hooks & headers', type: 'map' },
+        { id: 'italicSans', name: 'Italic (Sans-Serif)', note: 'Quotes & emphasis', type: 'map' },
+        { id: 'boldItalicSans', name: 'Bold Italic (Sans-Serif)', note: 'Bold callouts', type: 'map' },
+        { id: 'boldSerif', name: 'Bold (Serif)', note: 'Editorial serif', type: 'map' },
+        { id: 'italicSerif', name: 'Italic (Serif)', note: 'Book titles & quotes', type: 'map' },
+        { id: 'monospace', name: 'Monospace', note: 'Metrics & lists', type: 'map' },
+        { id: 'underlined', name: 'Underlined', note: 'Key phrases', type: 'combining', mark: '\u0332' },
+        { id: 'strikethrough', name: 'Strikethrough', note: 'Edits & contrasts', type: 'combining', mark: '\u0336' },
+        { id: 'script', name: 'Script / Cursive', note: 'Sign-offs & notes', type: 'map' }
+      ];
+
+      // Build fast O(1) lookup tables for each mapped style
+      var LOOKUPS = {};
+      Object.keys(MAPS).forEach(function (styleId) {
+        var table = Object.create(null);
+        var map = MAPS[styleId];
+        var i;
+        for (i = 0; i < ASCII_UPPER.length; i++) {
+          table[ASCII_UPPER[i]] = map.upper[i];
+        }
+        for (i = 0; i < ASCII_LOWER.length; i++) {
+          table[ASCII_LOWER[i]] = map.lower[i];
+        }
+        for (i = 0; i < ASCII_DIGITS.length; i++) {
+          table[ASCII_DIGITS[i]] = map.digits[i];
+        }
+        LOOKUPS[styleId] = table;
+      });
+
+      var graphemeSegmenter =
+        typeof Intl !== 'undefined' && typeof Intl.Segmenter === 'function'
+          ? new Intl.Segmenter('en', { granularity: 'grapheme' })
+          : null;
+
+      function splitGraphemes(text) {
+        if (!text) return [];
+        if (graphemeSegmenter) {
+          var segments = [];
+          var iter = graphemeSegmenter.segment(text);
+          var entry;
+          for (entry of iter) {
+            segments.push(entry.segment);
+          }
+          return segments;
+        }
+        return Array.from(text);
+      }
+
+      var EMOJI_RE = /\p{Extended_Pictographic}/u;
+
+      function applyCombiningMark(text, mark) {
+        if (!text) return '';
+        var clusters = splitGraphemes(text);
+        var out = '';
+        for (var i = 0; i < clusters.length; i++) {
+          var ch = clusters[i];
+          if (ch === '\n' || ch === '\r' || ch === '\t') {
+            out += ch;
+          } else if (EMOJI_RE.test(ch)) {
+            out += ch;
+          } else {
+            out += ch + mark;
+          }
+        }
+        return out;
+      }
+
+      function transformText(text, styleId) {
+        if (!text) return '';
+        var styleDef = null;
+        for (var s = 0; s < STYLES.length; s++) {
+          if (STYLES[s].id === styleId) {
+            styleDef = STYLES[s];
+            break;
+          }
+        }
+        if (!styleDef) return text;
+
+        if (styleDef.type === 'combining') {
+          return applyCombiningMark(text, styleDef.mark);
+        }
+
+        var table = LOOKUPS[styleId];
+        var chars = Array.from(text);
+        var result = '';
+        for (var i = 0; i < chars.length; i++) {
+          var c = chars[i];
+          result += table[c] !== undefined ? table[c] : c;
+        }
+        return result;
+      }
+
+      function formatForPreview(rawText, styleId, scope) {
+        if (!rawText) return '';
+        if (scope === 'full') {
+          return transformText(rawText, styleId);
+        }
+        // Hook Only: format the first non-empty line, preserve the rest cleanly
+        var lines = rawText.split('\n');
+        for (var i = 0; i < lines.length; i++) {
+          if (lines[i].trim().length > 0) {
+            lines[i] = transformText(lines[i], styleId);
+            break;
+          }
+        }
+        return lines.join('\n');
+      }
+
+      function computeFold(displayText, rawText) {
+        var rawLen = Array.from(rawText).length;
+        var clusters = splitGraphemes(displayText);
+        var lines = displayText.split('\n');
+        var exceedsChars = rawLen > FOLD_CHAR_LIMIT;
+        var exceedsLines = lines.length > 3;
+
+        if (!exceedsChars && !exceedsLines) {
+          return {
+            isTruncated: false,
+            previewText: displayText,
+            rawLength: rawLen
+          };
+        }
+
+        var truncated;
+        if (exceedsLines && lines.slice(0, 3).join('\n').length < FOLD_CHAR_LIMIT) {
+          truncated = lines.slice(0, 3).join('\n').replace(/\s+$/, '');
+        } else {
+          truncated = clusters.slice(0, FOLD_CHAR_LIMIT).join('');
+          // Trim partial trailing word cleanly if space exists near the end
+          var lastSpace = truncated.lastIndexOf(' ');
+          if (lastSpace > FOLD_CHAR_LIMIT - 35) {
+            truncated = truncated.slice(0, lastSpace);
+          }
+          truncated = truncated.replace(/\s+$/, '');
+        }
+
+        return {
+          isTruncated: true,
+          previewText: truncated,
+          rawLength: rawLen
+        };
+      }
+
+      function countWords(text) {
+        var trimmed = text.trim();
+        if (!trimmed) return 0;
+        return trimmed.split(/\s+/).length;
+      }
+
+      function copyToClipboard(text) {
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+          return navigator.clipboard.writeText(text).catch(function () {
+            return fallbackCopy(text);
+          });
+        }
+        return Promise.resolve(fallbackCopy(text));
+      }
+
+      function fallbackCopy(text) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.top = '-9999px';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        var ok = false;
+        try {
+          ok = document.execCommand('copy');
+        } catch (err) {
+          ok = false;
+        }
+        document.body.removeChild(ta);
+        return ok;
+      }
+
+      // Expose pure formatter API for automated verification without polluting UI
+      window.__LINKEDIN_FORMATTER__ = {
+        STYLES: STYLES,
+        MAPS: MAPS,
+        MAX_LINKEDIN_CHARS: MAX_LINKEDIN_CHARS,
+        FOLD_CHAR_LIMIT: FOLD_CHAR_LIMIT,
+        transformText: transformText,
+        formatForPreview: formatForPreview,
+        computeFold: computeFold,
+        countWords: countWords
+      };
+
+      // Stop before DOM wiring if running in a headless logic-only test environment
+      if (typeof document === 'undefined' || !document.getElementById('postInput')) {
+        return;
+      }
+
+      // App State
+      var state = {
+        text: DEFAULT_SAMPLE,
+        selectedStyleId: 'boldSans',
+        previewScope: 'hook',
+        previewVisible: true,
+        foldExpanded: false
+      };
+
+      var copyTimers = Object.create(null);
+
+      // DOM References
+      var postInput = document.getElementById('postInput');
+      var stylesGrid = document.getElementById('stylesGrid');
+      var workspaceGrid = document.getElementById('workspaceGrid');
+      var togglePreviewBtn = document.getElementById('togglePreviewBtn');
+      var sampleTextBtn = document.getElementById('sampleTextBtn');
+      var clearTextBtn = document.getElementById('clearTextBtn');
+      var headerFocusBtn = document.getElementById('headerFocusBtn');
+      var charCountLabel = document.getElementById('charCountLabel');
+      var wordCountLabel = document.getElementById('wordCountLabel');
+      var remainingLabel = document.getElementById('remainingLabel');
+      var limitBarFill = document.getElementById('limitBarFill');
+      var limitAlert = document.getElementById('limitAlert');
+      var scopeHookBtn = document.getElementById('scopeHookBtn');
+      var scopeFullBtn = document.getElementById('scopeFullBtn');
+      var previewStyleSelect = document.getElementById('previewStyleSelect');
+      var liPostBody = document.getElementById('liPostBody');
+      var foldSummary = document.getElementById('foldSummary');
+      var toggleFoldBtn = document.getElementById('toggleFoldBtn');
+      var previewCopyHint = document.getElementById('previewCopyHint');
+      var copyPreviewBtn = document.getElementById('copyPreviewBtn');
+      var liveAnnouncer = document.getElementById('liveAnnouncer');
+
+      var cardRefs = Object.create(null);
+
+      function announce(msg) {
+        if (!liveAnnouncer) return;
+        liveAnnouncer.textContent = '';
+        window.setTimeout(function () {
+          liveAnnouncer.textContent = msg;
+        }, 20);
+      }
+
+      function setButtonCopied(buttonEl, key, defaultLabel, announcedText) {
+        if (copyTimers[key]) {
+          window.clearTimeout(copyTimers[key]);
+        }
+        buttonEl.classList.add('is-copied');
+        buttonEl.textContent = 'Copied!';
+        announce(announcedText);
+
+        copyTimers[key] = window.setTimeout(function () {
+          buttonEl.classList.remove('is-copied');
+          buttonEl.textContent = defaultLabel;
+          delete copyTimers[key];
+        }, 1800);
+      }
+
+      function buildStyleCards() {
+        var gridFrag = document.createDocumentFragment();
+        var selectFrag = document.createDocumentFragment();
+
+        STYLES.forEach(function (style) {
+          // Select option
+          var opt = document.createElement('option');
+          opt.value = style.id;
+          opt.textContent = style.name;
+          selectFrag.appendChild(opt);
+
+          // Card element
+          var card = document.createElement('article');
+          card.className = 'style-card';
+          card.setAttribute('data-style-id', style.id);
+
+          var top = document.createElement('div');
+          top.className = 'style-card-top';
+
+          var meta = document.createElement('div');
+          meta.className = 'style-meta';
+
+          var title = document.createElement('h3');
+          title.className = 'style-name';
+          title.textContent = style.name;
+
+          var note = document.createElement('div');
+          note.className = 'style-note';
+          note.textContent = style.note;
+
+          meta.appendChild(title);
+          meta.appendChild(note);
+
+          var actions = document.createElement('div');
+          actions.className = 'style-card-actions';
+
+          var previewBtn = document.createElement('button');
+          previewBtn.type = 'button';
+          previewBtn.className = 'btn-preview-mini';
+          previewBtn.textContent = 'Preview';
+          previewBtn.setAttribute('aria-label', 'Preview ' + style.name + ' in LinkedIn feed');
+          previewBtn.addEventListener('click', function () {
+            state.selectedStyleId = style.id;
+            if (!state.previewVisible) {
+              state.previewVisible = true;
+            }
+            renderAll();
+            if (window.innerWidth <= 1024) {
+              var previewEl = document.getElementById('previewColumn');
+              if (previewEl) {
+                previewEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }
+          });
+
+          var copyBtn = document.createElement('button');
+          copyBtn.type = 'button';
+          copyBtn.className = 'btn-copy';
+          copyBtn.textContent = 'Copy';
+          copyBtn.setAttribute('aria-label', 'Copy ' + style.name + ' formatted text');
+          copyBtn.addEventListener('click', function () {
+            var formatted = transformText(state.text, style.id);
+            if (!formatted) return;
+            copyToClipboard(formatted).then(function () {
+              setButtonCopied(copyBtn, style.id, 'Copy', style.name + ' text copied to clipboard.');
+            });
+          });
+
+          actions.appendChild(previewBtn);
+          actions.appendChild(copyBtn);
+
+          top.appendChild(meta);
+          top.appendChild(actions);
+
+          var output = document.createElement('div');
+          output.className = 'style-output';
+          output.setAttribute('data-testid', 'output-' + style.id);
+
+          card.appendChild(top);
+          card.appendChild(output);
+
+          gridFrag.appendChild(card);
+
+          cardRefs[style.id] = {
+            card: card,
+            output: output,
+            copyBtn: copyBtn,
+            previewBtn: previewBtn
+          };
+        });
+
+        stylesGrid.appendChild(gridFrag);
+        previewStyleSelect.appendChild(selectFrag);
+      }
+
+      function renderCounter() {
+        var len = Array.from(state.text).length;
+        var words = countWords(state.text);
+        var remaining = MAX_LINKEDIN_CHARS - len;
+        var pct = Math.min(100, (len / MAX_LINKEDIN_CHARS) * 100);
+
+        charCountLabel.textContent = len.toLocaleString('en-US') + ' / 3,000 characters';
+        wordCountLabel.textContent = words.toLocaleString('en-US') + (words === 1 ? ' word' : ' words');
+
+        charCountLabel.classList.remove('is-warning', 'is-over');
+        limitBarFill.classList.remove('is-warning', 'is-over');
+        limitAlert.className = 'limit-alert';
+        limitAlert.textContent = '';
+
+        if (len > MAX_LINKEDIN_CHARS) {
+          var overBy = len - MAX_LINKEDIN_CHARS;
+          remainingLabel.textContent = overBy.toLocaleString('en-US') + ' over limit';
+          charCountLabel.classList.add('is-over');
+          limitBarFill.classList.add('is-over');
+          limitAlert.classList.add('is-visible', 'is-over');
+          limitAlert.textContent =
+            'Over LinkedIn\'s 3,000-character limit by ' +
+            overBy.toLocaleString('en-US') +
+            (overBy === 1 ? ' character.' : ' characters.') +
+            ' Trim your draft before posting.';
+        } else if (len >= WARN_LINKEDIN_CHARS) {
+          remainingLabel.textContent = remaining.toLocaleString('en-US') + ' remaining';
+          charCountLabel.classList.add('is-warning');
+          limitBarFill.classList.add('is-warning');
+          limitAlert.classList.add('is-visible', 'is-warning');
+          limitAlert.textContent =
+            'Approaching LinkedIn\'s 3,000-character limit (' +
+            remaining.toLocaleString('en-US') +
+            ' remaining).';
+        } else {
+          remainingLabel.textContent = remaining.toLocaleString('en-US') + ' remaining';
+        }
+
+        limitBarFill.style.width = pct.toFixed(1) + '%';
+        clearTextBtn.disabled = len === 0;
+      }
+
+      function renderStyleCards() {
+        var hasText = state.text.trim().length > 0;
+        STYLES.forEach(function (style) {
+          var refs = cardRefs[style.id];
+          var isSelected = style.id === state.selectedStyleId;
+          refs.card.classList.toggle('is-selected', isSelected);
+          refs.previewBtn.textContent = isSelected ? 'Previewing' : 'Preview';
+
+          if (!hasText) {
+            refs.output.textContent = transformText('Type above to preview ' + style.name, style.id);
+            refs.output.classList.add('is-empty');
+            refs.copyBtn.disabled = true;
+          } else {
+            refs.output.textContent = transformText(state.text, style.id);
+            refs.output.classList.remove('is-empty');
+            refs.copyBtn.disabled = false;
+          }
+        });
+      }
+
+      function renderPreview() {
+        workspaceGrid.classList.toggle('preview-hidden', !state.previewVisible);
+        togglePreviewBtn.setAttribute('aria-pressed', state.previewVisible ? 'true' : 'false');
+        togglePreviewBtn.textContent = state.previewVisible ? 'Hide Preview' : 'Show Preview';
+
+        previewStyleSelect.value = state.selectedStyleId;
+        scopeHookBtn.setAttribute('aria-pressed', state.previewScope === 'hook' ? 'true' : 'false');
+        scopeFullBtn.setAttribute('aria-pressed', state.previewScope === 'full' ? 'true' : 'false');
+
+        previewCopyHint.textContent =
+          state.previewScope === 'hook'
+            ? 'Copies your post with only the opening hook styled.'
+            : 'Copies your full post in the selected Unicode style.';
+
+        var hasText = state.text.trim().length > 0;
+        copyPreviewBtn.disabled = !hasText;
+
+        liPostBody.textContent = '';
+
+        if (!hasText) {
+          liPostBody.classList.add('is-empty');
+          liPostBody.textContent = 'Start typing in the editor to preview how your hook looks above LinkedIn\'s "see more" fold.';
+          foldSummary.textContent = '0 / 210 characters before fold';
+          toggleFoldBtn.hidden = true;
+          return;
+        }
+
+        liPostBody.classList.remove('is-empty');
+        var formattedPost = formatForPreview(state.text, state.selectedStyleId, state.previewScope);
+        var foldInfo = computeFold(formattedPost, state.text);
+
+        if (foldInfo.isTruncated && !state.foldExpanded) {
+          liPostBody.appendChild(document.createTextNode(foldInfo.previewText + '… '));
+          var inlineSeeMore = document.createElement('button');
+          inlineSeeMore.type = 'button';
+          inlineSeeMore.className = 'li-see-more-btn';
+          inlineSeeMore.textContent = 'see more';
+          inlineSeeMore.addEventListener('click', function () {
+            state.foldExpanded = true;
+            renderPreview();
+          });
+          liPostBody.appendChild(inlineSeeMore);
+
+          foldSummary.textContent = 'Folded at ~210 chars (' + foldInfo.rawLength.toLocaleString('en-US') + ' total)';
+          toggleFoldBtn.hidden = false;
+          toggleFoldBtn.textContent = 'Expand full post';
+        } else {
+          liPostBody.textContent = formattedPost;
+          if (foldInfo.isTruncated) {
+            foldSummary.textContent = 'Showing full post (' + foldInfo.rawLength.toLocaleString('en-US') + ' chars)';
+            toggleFoldBtn.hidden = false;
+            toggleFoldBtn.textContent = 'Collapse to fold';
+          } else {
+            foldSummary.textContent = 'Fits above the 210-character fold (' + foldInfo.rawLength.toLocaleString('en-US') + ' / 210)';
+            toggleFoldBtn.hidden = true;
+          }
+        }
+      }
+
+      function renderAll() {
+        renderCounter();
+        renderStyleCards();
+        renderPreview();
+      }
+
+      // Event Listeners
+      postInput.addEventListener('input', function () {
+        state.text = postInput.value;
+        state.foldExpanded = false;
+        renderAll();
+      });
+
+      clearTextBtn.addEventListener('click', function () {
+        state.text = '';
+        state.foldExpanded = false;
+        postInput.value = '';
+        renderAll();
+        postInput.focus();
+        announce('Editor cleared.');
+      });
+
+      sampleTextBtn.addEventListener('click', function () {
+        state.text = DEFAULT_SAMPLE;
+        state.foldExpanded = false;
+        postInput.value = DEFAULT_SAMPLE;
+        renderAll();
+        announce('Sample LinkedIn post loaded.');
+      });
+
+      togglePreviewBtn.addEventListener('click', function () {
+        state.previewVisible = !state.previewVisible;
+        renderPreview();
+      });
+
+      headerFocusBtn.addEventListener('click', function () {
+        postInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        postInput.focus();
+      });
+
+      scopeHookBtn.addEventListener('click', function () {
+        state.previewScope = 'hook';
+        renderPreview();
+      });
+
+      scopeFullBtn.addEventListener('click', function () {
+        state.previewScope = 'full';
+        renderPreview();
+      });
+
+      previewStyleSelect.addEventListener('change', function () {
+        state.selectedStyleId = previewStyleSelect.value;
+        renderAll();
+      });
+
+      toggleFoldBtn.addEventListener('click', function () {
+        state.foldExpanded = !state.foldExpanded;
+        renderPreview();
+      });
+
+      copyPreviewBtn.addEventListener('click', function () {
+        if (!state.text.trim()) return;
+        var out = formatForPreview(state.text, state.selectedStyleId, state.previewScope);
+        copyToClipboard(out).then(function () {
+          setButtonCopied(copyPreviewBtn, '__preview__', 'Copy Post', 'Formatted LinkedIn post copied to clipboard.');
+        });
+      });
+
+      // Initialize
+      buildStyleCards();
+      postInput.value = state.text;
+      renderAll();
+    })();
+  </script>
+</body>
+</html>
